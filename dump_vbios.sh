@@ -205,8 +205,7 @@ checklocation() {
 }
 
 buildtempvm() {
-cat > /tmp/dumpvbios.xml << EOF
-<?xml version='1.0' encoding='UTF-8'?>
+myvar="<?xml version='1.0' encoding='UTF-8'?>
 <domain type='kvm'>
 <name>dumpvbios</name>
 <memory unit='KiB'>1048576</memory>
@@ -227,7 +226,7 @@ cat > /tmp/dumpvbios.xml << EOF
 <on_reboot>restart</on_reboot>
 <on_crash>restart</on_crash>
 <devices>
-<emulator>/usr/local/sbin/qemu</emulator>
+<emulator>/usr/sbin/qemu-system-x86_64</emulator>
 <controller type='pci' index='1' model='pcie-root-port'>
 <model name='pcie-root-port'/>
 <target chassis='1' port='0x8'/>
@@ -239,8 +238,8 @@ cat > /tmp/dumpvbios.xml << EOF
 </source>
 </hostdev>
 </devices>
-</domain>
-EOF
+</domain>"
+echo $myvar >> /tmp/dumpvbios.xml
 }
 
 isgpuprimary () {
