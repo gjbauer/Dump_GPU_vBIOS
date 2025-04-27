@@ -7,7 +7,8 @@
 ##### FILL IN THE  VARIABLES BELOW #######################################################################
 
 ###################
-gpuid="xxxxxx"
+#gpuid="xxxxxx"
+read -p 'GPU ID: ' gpuid
 ###################
 		
 #####Name the vbios for example gtx2080ti.rom	
@@ -15,13 +16,14 @@ gpuid="xxxxxx"
 ### Naming of the vbios is optional ....  if you do not rename it here then the script will name it based off the details found about the gpu dumped
 
 ###################
-vbiosname="gpu vbios.rom"
+#vbiosname="gpu vbios.rom"
 ###################
 
 ##### Location to put vbios (change if you dont want to use below location) if location doesnt exist it will be created for you.
 
 ###################
-vbioslocation="/mnt/user/isos/vbios/"
+#vbioslocation="/mnt/user/isos/vbios/"
+read -p 'vBIOS Location: ' vbioslocation
 ###################
 
 ##### Runs checks on device to see if it is in fact a GPU. Recommended to leave set as "yes"
