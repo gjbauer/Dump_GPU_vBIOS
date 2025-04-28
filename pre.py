@@ -1,18 +1,22 @@
 #!/usr/bin/python3
 
 # Open the file in read mode
-file = open("grub", "r")
+file = open("grub", "r+")
 
 # Read each line one by one
-for line in file:
-	if "GRUB_CMDLINE_LINUX_DEFAULT" in line:  # .strip() to remove newline characters
-		print(line.strip())
-		break
+nf = list(line for line in file)
 
-for line in file:
-	if "GRUB_CMDLINE_LINUX" in line:  # .strip() to remove newline characters
-		print(line.strip())
-		break
+for l in nf:
+	if "GRUB_CMDLINE_LINUX_DEFAULT" in l:  # .strip() to remove newline characters
+		i = nf.index(l)
+		s = "GRUB_CMDLINE_LINUX_DEFAULT" + "=\"intel_iommu=on\" text"
+		print(s)
+		nf[i] = s
+
+for l in nf:
+	if "GRUB_CMDLINE_LINUX_DEFAULT" in l:  # .strip() to remove newline characters
+		print(l.strip())
+
 
 # Close the file
 file.close()
