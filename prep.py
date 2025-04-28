@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import subprocess
 
 # Open the file in read mode
 file = open("/etc/default/grub", "r+")
@@ -37,6 +38,8 @@ for l in nf:
 
 # Close the file
 file.close()
+
+subprocess.run(["grub-mkconfig", "-o", "/boot/grub/grub.cfg"])
 
 print("preliminary work completed. please restart your computer and re-run the script")
 quit(0)
