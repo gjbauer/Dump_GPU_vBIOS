@@ -9,5 +9,10 @@ for line in file:
 		print(line.strip())
 		break
 
+for line in file:
+	if "GRUB_CMDLINE_LINUX" in line:  # .strip() to remove newline characters
+		print(line.strip())
+		break
+
 # Close the file
 file.close()
